@@ -23,7 +23,7 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build **/*.csproj --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
@@ -52,6 +52,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'workacoes'
-          slot-name: 'Production'
+          slot-name: 'dev'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F5B6545028440D08FD737E7E53619DB }}
           package: .
